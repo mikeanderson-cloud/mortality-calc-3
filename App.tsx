@@ -352,7 +352,7 @@ FAMILY HISTORY: ${profile.familyHistory?.length ? profile.familyHistory.join(", 
 Please return my complete personalized risk analysis as the JSON object specified.`;
 
     try {
-      const resp = await fetch(/api/analyze, {
+     const resp = await fetch("/api/analyze", {
         method: "POST",
        headers: { "Content-Type": "application/json", "anthropic-dangerous-direct-browser-access": "true" },
         body: JSON.stringify({
