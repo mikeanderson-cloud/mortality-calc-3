@@ -352,9 +352,13 @@ FAMILY HISTORY: ${profile.familyHistory?.length ? profile.familyHistory.join(", 
 Please return my complete personalized risk analysis as the JSON object specified.`;
 
     try {
-     const resp = await fetch("/api/analyze", {
-        method: "POST",
-       headers: { "Content-Type": "application/json", "anthropic-dangerous-direct-browser-access": "true" },
+     const resp = await fetch("https://api.anthropic.com/v1/messages", {
+  method: "POST",
+  headers: { 
+    "Content-Type": "application/json", 
+    "anthropic-dangerous-direct-browser-access": "true",
+    "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY
+  },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
           max_tokens: 8000,
